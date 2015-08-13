@@ -1,0 +1,58 @@
+<!DOCTYPE html lang ="en">
+
+<html ng-app="scotchTodo">
+	<head>
+		<title>Scotch_mean_spa</title>
+			 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	    <style>
+	        html                    { overflow-y:scroll; }
+	        body                    { padding-top:50px; }
+	        #todo-list              { margin-bottom:30px; }
+	    </style>
+
+	    <!-- SPELLS -->
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+	    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+	    <script src="js/appRoutes.js"></script>
+		</head>
+	<body ng-controller="MainController">
+		<div class="container">
+			<div class="jumbotron text-center">
+				<h1>Scotch Mean Single Page Application</h1>
+				<h3>length of todos {{todos.length}}</h3>
+			</div>
+			<!-- TODO LIST -->
+        <div id="todo-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                <div class="checkbox" ng-repeat="todo in todos">
+                    <label>
+                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FORM TO CREATE TODOS -->
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+                    </div>
+
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+                </form>
+            </div>
+        </div>
+			
+		</div>
+	</body>
+
+</html>
+ 

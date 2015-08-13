@@ -2,10 +2,6 @@ var Todo = require('./models/todo');
 
 module.exports = function(app){
 	
-	app.get('*', function(req, res){
-		res.sendFile('./public/views/index.html');
-	});
-
 	app.get('/api/todos', function(req, res){
 		Todo.find(function(err, todos){
 			if(err){
@@ -46,6 +42,10 @@ module.exports = function(app){
 				res.json(todos);
 			});
 		});
+	});
+
+	app.get('*', function(req, res){
+		res.sendFile('/home/thembelani/scotch_mean_spa/public/index.html');
 	});
 
 
